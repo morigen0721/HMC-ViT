@@ -180,9 +180,6 @@ class dualtran(nn.Sequential):
                 in_channels: int = 3,  #输入通道数
                 patch_size_x: int = 9,  #patch大小x
                 patch_size_y: int = 9,  #patch大小y
-                ####I don’t understand how an embedding size of 243 with 8 attention heads is achieved in DCT-ViT… 
-                #### so I changed it to 248.
-                #### It’s my lack of expertise; please forgive me.
                 emb_size: int = 248,  #嵌入维度
                 img_size: int = 16,  #原始图像大小
                 depth: int = 4,  #transformer编码器深度
