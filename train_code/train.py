@@ -134,7 +134,7 @@ if sys.argv[0].endswith('train.py'):    # Execute the following logic only when 
         model.train()  # Set model to training mode
         for batch_data, batch_label in train_loader:
             batch_data, batch_label = batch_data.to(device), batch_label.to(device)  # Move to GPU
-            batch_data = batch_extract_upper_triangle(batch_data)  # Extract upper triangular elements, return shape (3, 136)
+            batch_data = batch_extract_upper_triangle(batch_data)  # Extract upper triangular elements, return shape (3, 120)
             batch_data = batch_data.view(batch_data.size(0), 3, 1, -1)
             optimizer.zero_grad()  # Clear previous gradients
             outputs = model(batch_data)  # Forward pass
@@ -148,7 +148,7 @@ if sys.argv[0].endswith('train.py'):    # Execute the following logic only when 
         with torch.no_grad():  # Disable gradient computation
             for batch_data, batch_label in val_loader:
                 batch_data, batch_label = batch_data.to(device), batch_label.to(device)
-                batch_data = batch_extract_upper_triangle(batch_data)  # Extract upper triangular elements, return shape (3, 136)
+                batch_data = batch_extract_upper_triangle(batch_data)  # Extract upper triangular elements, return shape (3, 120)
                 batch_data = batch_data.view(batch_data.size(0), 3, 1, -1)
                 outputs = model(batch_data)  # Forward pass
                 loss = criterion(outputs, batch_label)  # Compute loss
